@@ -4,19 +4,13 @@ Map Navigation Hash (History)
 #### Overview
 Uses dojo/router to enable zooming to next or previous extent using the browser forward and back buttons. The geographic map center and map zoom level is placed on the url.
 
-#### CMV Configuration
+#### Configuration
 Include the following code in js/config/viewer.js:
-```json
-navhash: {
-  include: true,
-  id: 'navhash',
-  type: 'floating',
-  path: 'viewer/dijit/MapNavigationHash/MapNavigationHash',
-  title: 'Map Navigation Hash',
-  options: {
-    map: true
-  }
-}
+```javascript
+var navHash = new NavHash({
+	map: this.map, //reference to the jsapi map object
+}, "referenceNode");
+navHash.startup();
 ```
 
 #### Usage Example
