@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+    <title>Map Navigation Hash</title>
+    <link rel="stylesheet" href="http://js.arcgis.com/3.9/js/esri/css/esri.css">
+    <style>
+        @import url('main.css');
+
+        /* override default styles here */
+    </style>
+</head>
+  <body>
+    <div id="map"></div>
+    <div id="widgetContainer">
+        <div id="widgetNode"></div>
+    </div>
+    <script type="text/javascript">
+        var dojoConfig = {
+            async: true,
+            packages: [{
+                name: 'src',
+                location: location.pathname.replace(/[^\/]+$/, '') + 'src'
+            }]
+        };
+    </script>
+    <script src="http://js.arcgis.com/3.9/"></script>
+    <script type="text/javascript">
+        var widgetUnderTest;
+        var map;
+
+        require(['esri/map',
+            'src/MapNavigationHash',
+            'dojo/domReady!'
+        ], function(Map, Module) {
+
+            // init map
+            map = new Map('map',{
+                basemap: 'topo',
+                center: [-122.45,37.75],
+                zoom: 13,
+                sliderStyle: 'small'
+            });
+
+            // init widget
+            widgetUnderTest = new Module({
+                map: map
+            }, 'widgetNode');
+            widgetUnderTest.startup();
+        });
+    </script>
+</body>
+</html>
