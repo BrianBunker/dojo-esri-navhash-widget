@@ -47,8 +47,8 @@ define([
           y = (evt.extent.ymax + evt.extent.ymin) / 2;
         var geographicLocation = webMercatorUtils.xyToLngLat(x, y);
         var currentHash = hash().split('/');
-        currentHash[1] = geographicLocation[0].toFixed(4);
-        currentHash[2] = geographicLocation[1].toFixed(4);
+        currentHash[1] = geographicLocation[0].toFixed(5);
+        currentHash[2] = geographicLocation[1].toFixed(5);
         currentHash[3] = this.map.getLevel();
         hash(currentHash.join('/'));
         this.hashUpdating = false;
