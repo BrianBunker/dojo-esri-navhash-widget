@@ -29,6 +29,10 @@ define([
     },
 
     handleHashChange: function(evt) {
+      if (this.hashUpdating) {
+        this.hashUpdating = false;
+        return;
+      }
       this.changeLocation(evt);
     },
     changeLocation: function(evt) {
@@ -51,7 +55,6 @@ define([
         currentHash[2] = geographicLocation[1].toFixed(5);
         currentHash[3] = this.map.getLevel();
         hash(currentHash.join('/'));
-        this.hashUpdating = false;
       }
     }
   });
